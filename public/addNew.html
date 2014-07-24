@@ -42,26 +42,26 @@
             <div>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><span class="badge" style="background-color: #428bca;">1</span></span>
-                <input type="text" class="form-control" placeholder="Give it a title">
+                <input id="title" type="text" class="form-control" placeholder="Give it a title">
               </div>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><span class="badge" style="background-color: #5cb85c;">2</span></span>
-                <textarea type="text" class="form-control" style="height: 6em;" placeholder="Add a description"></textarea>
+                <textarea id="description" type="text" class="form-control" style="height: 6em;" placeholder="Add a description"></textarea>
               </div>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><span class="badge" style="background-color: #5bc0de;">3</span></span>
-                <textarea type="text" class="form-control" placeholder="Skillset"></textarea>
+                <textarea id="skillset" type="text" class="form-control" placeholder="Skillset"></textarea>
               </div>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><span class="badge" style="background-color: #f0ad4e;">4</span></span>
-                <input type="text" class="form-control" placeholder="Your name">
+                <input id="name" type="text" class="form-control" placeholder="Your name">
               </div>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><span class="badge" style="background-color: #d9534f;">5</span></span>
-                <input type="text" class="form-control" placeholder="Your email">
+                <input id="email" type="text" class="form-control" placeholder="Your email">
               </div>
               <div>
-                <button type="button" class="btn btn-lg btn-success">Submit</button>
+                <button id="submit-btn" type="button" class="btn btn-lg btn-success">Submit</button>
               </div>
             </div>
 
@@ -71,11 +71,18 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script>
+      $("#submit-btn").click( function() {
+        var data = { 
+          name: $("#name").val(), 
+          email: $("#email").val(),
+          title: $("#title").val(),
+          description: $("#description").val(),
+          skillset: $("#skillset").val()
+        }
+        $.post( "/add-new", data);
+      })
+      </script>
   </body>
 </html>
