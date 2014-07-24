@@ -173,3 +173,11 @@ body {
   margin-left: auto;
   position: relative;
 }
+
+textarea, input {
+  border-radius: 0px;
+}
+
+.input-group-addon {
+  border-radius: 0px;  
+}
