@@ -1,0 +1,31 @@
+body {  
+  font-family: 'Lato', sans-serif; 
+  font-weight: 400;
+}
+
+.btn{
+	text-transform:uppercase; 
+  font-weight:bold; 
+  border-radius:2px; 
+  background-color:transparent; 
+  border:3px solid #333; 
+  padding: 6px 12px;
+  transition:all 1s ease; 
+  font-family: 'Lato', sans-serif; 
+  font-weight: 900;
+}
+.btn:hover, button:hover {
+	outline:0;  
+  color:#FFF;
+}
+
+.btn-save{padding: .7em 1.5em; border:none; color:#FFF; background: linear-gradient(to bottom, #2980b9 50%, #3498db 50%); background-size: 100% 200%; background-position:left bottom;}
+.btn-save:hover {background-position:right top;}
+
+.btn-cancel{padding: .7em 1.5em; border:none; color:#FFF; background: linear-gradient(to bottom, #e74c3c 50%, #c0392b 50%); background-size: 100% 200%; background-position:left top;}
+.btn-cancel:hover {background-position:right bottom;}
+
+.circle {
+    background: #f00;    
+    border-radius: 50%;
+}
