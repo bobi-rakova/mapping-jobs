@@ -12,8 +12,10 @@
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script type="text/javascript"  src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript"  src="js/mustache.js"></script>
+    <script type="text/javascript"  src="js/app.js"></script>
   </head>
 
   <body>
@@ -40,15 +42,17 @@
           </div>
 
             <div class="row">
-
+              <div id="target">Loading...</div>
+            </div>
+            <!--
               <div class="col-sm-6 col-md-2">
                 <div class="thumbnail">
                   <img data-src="holder.js/300x300" alt="..." src="./images/Tweet-for-a-job.jpg">
                   <div class="caption">
-                    <h3>Spaceship Captain</h3>
-                    <p>Planet Labs is looking for a talented, well-rounded scientist-engineer to pilot its growing fleet of satellites.
+                    <h3 id="title">Spaceship Captain</h3>
+                    <p id="description">Planet Labs is looking for a talented, well-rounded scientist-engineer to pilot its growing fleet of satellites.
                     </p>
-                    <p>
+                    <p id="skillset">
                     This is a opportunity to take responsibility for dozens of satellites in orbit, to build a system that scales to hundreds of satellites, and to work in an exciting growing company at the forefront of aerospace technology development.</p>
                     <b>Desirable experiences:</b>
                     <ul>
@@ -92,11 +96,49 @@
                 </div>
               </div>
 
-            </div>
+              <div class="col-sm-6 col-md-2">
+                <div class="thumbnail">
+                  <img data-src="holder.js/300x300" alt="..." src="./images/space-garden.jpg">
+                  <div class="caption">
+                    <h3>AI Corpus Curator</h3>
+                    <p>Somebody that trains AIs by curating the Input Data Corpus that they need in order to operate so solve probles once it's trained.</p>                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-2">
+                <div class="thumbnail">
+                  <img data-src="holder.js/300x300" alt="..." src="./images/space-garden.jpg">
+                  <div class="caption">
+                    <h3>Space Taxi Driver</h3>
+                    <p>Yes!</p>                    
+                  </div>
+                </div>
+              </div>
+
+
+            </div>-->
         </div>
       </div>
 
     </div>
+
+    <script id="template" type="x-tmpl-mustache">
+      {{#items}}
+      <div class="col-sm-6 col-md-2">
+          <div class="thumbnail">
+            <img data-src="holder.js/300x300" alt="..." src="./images/Tweet-for-a-job.jpg">
+            <div class="caption">
+              <h3>{{title}}</h3>
+              <p>{{description}}</p>
+              <b>Desirable experiences:</b>              
+              <p>{{skillset}}</p>
+            </div>
+          </div>
+      </div>
+      {{/items}}
+
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
