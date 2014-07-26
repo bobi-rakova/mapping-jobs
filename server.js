@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 var redis = require('redis')
-var client = redis.createClient(6379, process.env.IP)
+var client = redis.createClient()
 
 client.on('error', function(error){
 	console.log('redis error ' + error)
