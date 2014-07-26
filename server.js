@@ -1,4 +1,6 @@
 var express = require('express');
+var logfmt = require("logfmt");
+
 var app = express();
 
 var redis = require('redis')
@@ -29,6 +31,12 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded())
 
 app.use(express.static(__dirname + '/public'));
+app.use(logfmt.requestLogger());
+
+app.get('/', function(req, res) {
+  res.send('Hello World!');
+});
+
 
 app.post('/add-new', function(req, res){
 	var data = JSON.stringify(req.body);
@@ -44,4 +52,8 @@ app.get('/get-all', function(req, res){
 	})
 });
 
-app.listen(3000);
+var port = Number(process.env.PORT || 5000);
+
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
