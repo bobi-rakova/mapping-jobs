@@ -26,3 +26,16 @@ textarea, input {
 .input-group-addon {
   border-radius: 0px;  
 }
+
+#thank-you-box {
+  background-color: green;
+  padding-left: 20px;
+  display: inline-block;
+  padding-right: 20px;
+  margin: 10px;
+  border: solid 2px;
+}
+
+#submit button{
+    margin-top: 10px;
+}

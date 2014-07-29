@@ -1,14 +1,11 @@
 var express = require('express');
 var logfmt = require("logfmt");
-
 var app = express();
-
 var redis = require('redis')
 
 if (process.env.REDISTOGO_URL) {
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
 	var client = redis.createClient(rtg.port, rtg.hostname);
-
 	client.auth(rtg.auth.split(":")[1]);
 } else {
 	var client = redis.createClient()
@@ -27,33 +24,29 @@ client.on('end', function(){
 })
 
 var bodyParser = require('body-parser')
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       
 app.use(bodyParser.urlencoded())
-
 app.use(express.static(__dirname + '/public'));
-app.use(logfmt.requestLogger());
+// For debugging:
+// app.use(logfmt.requestLogger()); 
 
-app.get('/', function(req, res) {
-  res.send('Hello World!');
+app.get('/hello', function(req, res) {
+  res.send('<h1>Hello World!</h1>');
 });
-
 
 app.post('/add-new', function(req, res){
 	var data = JSON.stringify(req.body);
-	// console.log('POST request received: ' + data);
-	client.lpush('jobs-list', data)
-	res.send(200);
+	client.rpush('jobs-list', data)
+	res.send(data);
 });
 
 app.get('/get-all', function(req, res){
 	var data = client.lrange('jobs-list', 0, 100, function(err, data) {
-		// console.log("GET: " + data)
   		res.send(data);
 	})
 });
 
 var port = Number(process.env.PORT || 5000);
-
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
