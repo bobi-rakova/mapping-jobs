@@ -39,3 +39,9 @@ textarea, input {
 #submit button{
     margin-top: 10px;
 }
+
+.story {
+  width: 20em;
+  vertical-align: top;
+  display: inline-block;
+}
