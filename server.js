@@ -36,12 +36,12 @@ app.get('/hello', function(req, res) {
 
 app.post('/add-new', function(req, res){
 	var data = JSON.stringify(req.body);
-	client.rpush('jobs-list', data)
+	client.rpush('items-list', data)
 	res.send(data);
 });
 
 app.get('/get-all', function(req, res){
-	var data = client.lrange('jobs-list', 0, 100, function(err, data) {
+	var data = client.lrange('items-list', 0, 100, function(err, data) {
   		res.send(data);
 	})
 });
